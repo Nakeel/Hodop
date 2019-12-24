@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "141430674244",
+    "firebase_url": "https://hodop-21b70.firebaseio.com",
+    "project_id": "hodop-21b70",
+    "storage_bucket": "hodop-21b70.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141430674244:android:6d21c3ba522707365efd11",
+        "android_client_info": {
+          "package_name": "com.we2dx.hodop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141430674244-ft215ng6bha0phggotkv23u9vm9dqp1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpDB45jVIJiSkHZ3I7xyAHMFGFABV5TSA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141430674244-ft215ng6bha0phggotkv23u9vm9dqp1a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
