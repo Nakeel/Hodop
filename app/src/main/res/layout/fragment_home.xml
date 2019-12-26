@@ -1,19 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_home"
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.we2dx.hodop.activity.HomeActivity" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingStart="@dimen/_12sdp"
+        android:id="@+id/select_current_loc_layout"
+        android:paddingEnd="@dimen/_13sdp"
+        android:background="@drawable/location_edit_text_rect_bg_white"
+        android:paddingTop="@dimen/_10sdp"
+        android:elevation="@dimen/_1sdp"
+        android:layout_above="@id/select_destination_loc_layout"
+        tools:targetApi="lollipop"
+        android:layout_marginTop="@dimen/_35sdp"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/select_current_loc_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:ellipsize="end"
+            android:text="What's your current location"
+            android:textColor="@color/grey_400"
+            android:textSize="@dimen/_13ssp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_marker_location"
+            android:layout_height="@dimen/_20sdp"
+
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/location_edit_text_rect_bg_white"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingStart="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_13sdp"
+        android:id="@+id/select_destination_loc_layout"
+        android:paddingTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_45sdp"
+        android:elevation="@dimen/_1sdp"
+        android:layout_above="@id/get_destination_route_button"
+        tools:targetApi="lollipop"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/_13ssp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:ellipsize="end"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:id="@+id/select_destination_loc_text"
+            android:textColor="@color/grey_400"
+            android:text="Where are you going"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_alignParentStart="true"
+
+            android:src="@drawable/ic_marker_destination"
+            android:layout_height="@dimen/_20sdp"
+
+            />
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:id="@+id/get_destination_route_button"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textColor="@color/white"
+        android:background="@drawable/no_edge_blue_button"
+        android:layout_alignParentBottom="true"
+        android:text="Join Community"
+        />
+</RelativeLayout>

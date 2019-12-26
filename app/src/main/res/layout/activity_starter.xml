@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".activity.StarterActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_marginTop="@dimen/_90sdp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_group_logo1"
+        />
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_120sdp"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:textStyle="bold"
+        android:id="@+id/take_a_tour_button"
+        android:elevation="@dimen/_4sdp"
+        android:background="@drawable/round_edge_blue_button"
+        android:textColor="@color/white"
+        android:layout_marginEnd="@dimen/_40sdp"
+        android:text="@string/take_a_peep"
+        tools:targetApi="lollipop" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:id="@+id/get_started_button"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_40sdp"
+        android:background="@drawable/round_edge_white_button"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textColor="@color/colorPrimaryDark"
+        android:elevation="@dimen/_4sdp"
+        android:text="Get Started"
+        tools:targetApi="lollipop" />
+
+</LinearLayout>

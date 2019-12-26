@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.activity.SplashScreenActivity">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_120sdp"
+        android:src="@drawable/ic_group_logo1"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/_19ssp"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_above="@id/app_info"
+        android:id="@+id/app_name"
+        android:textColor="@color/colorPrimaryDark"/>
+    <androidx.appcompat.widget.AppCompatTextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/traffic_update_app"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+        android:id="@+id/app_info"
+        android:textStyle="bold"
+    android:textSize="@dimen/_17ssp"
+        android:layout_marginBottom="@dimen/_10sdp"
+    android:textColor="@color/blue"/>
+
+</RelativeLayout>

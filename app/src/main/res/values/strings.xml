@@ -14,4 +14,20 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="title_activity_maps">Map</string>
+    <string name="traffic_update_app">Traffic Update App</string>
+    <string name="take_a_peep">Take a Peep</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_phone_no">Not a valid phone number</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_sign_up">Sign in</string>
+    <string name="with_the_speed_of_light_text">with the speed of light</string>
+    <string name="begin_journey">Begin Journey!</string>
+    <string name="phone_number">... phone number</string>
 </resources>

@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#063C68</color>
+    <color name="colorPrimaryDark">#00294a</color>
+    <color name="colorAccent">#fff</color>
+
+    <color name="login_color">#063C68</color>
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="blue">#1c8dff</color>
+    <color name="blue_semi">#75cdff</color>
+    <color name="blue_light">#75cdff</color>
+
+    <color name="grey">#EEEEEE</color>
+    <color name="grey_300">#DFDAD9</color>
+    <color name="grey_400">#B9B9B9</color>
+    <color name="grey_600">#858382</color>
+    <color name="grey_200">#DBD5D2</color>
+
+    <color name="basic_plan_text">#9E9A94</color>
+    <color name="premium_plan_text">#CC7F0A</color>
+    <color name="starter_plan_text">#BE780C</color>
+    <color name="light_gray">#F0F5F5</color>
+    <color name="translucent_white">#80FFFFFF</color>
+    <color name="dark_gray">#243037</color>
+
+
+    <color name="transparent_bg">#00F8F4F4</color>
+    <color name="primaryRed">#b1000d</color>
+    <color name="green_color">#38F30D</color>
+    <color name="grey_800">#302F2F</color>
+    <color name="grey_700">#383737</color>
+
 </resources>
