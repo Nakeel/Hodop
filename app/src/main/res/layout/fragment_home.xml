@@ -43,7 +43,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/_20sdp"
             android:layout_alignParentStart="true"
-            android:src="@drawable/ic_marker_location"
+            android:src="@drawable/ic_location"
             android:layout_height="@dimen/_20sdp"
 
             />
@@ -84,13 +84,14 @@
     </RelativeLayout>
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/get_destination_route_button"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:background="@drawable/no_edge_blue_button"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:text="Join Community"
-        />
+        android:layout_marginEnd="@dimen/_minus14sdp"
+        android:layout_marginBottom="@dimen/_minus16sdp"
+        android:background="@drawable/get_traffic_info_bg"
+        android:src="@drawable/ic_local_car_wash_24px" />
 </RelativeLayout>

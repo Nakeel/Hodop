@@ -1,4 +1,4 @@
-package com.we2dx.hodop.ui.gallery
+package com.we2dx.hodop.ui.traffic_updates
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.we2dx.hodop.R
 
-class GalleryFragment : Fragment() {
+class TrafficUpdatesFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private lateinit var trafficUpdatesViewModel: TrafficUpdatesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-            ViewModelProviders.of(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
+        trafficUpdatesViewModel =
+            ViewModelProviders.of(this).get(TrafficUpdatesViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_traffic_updates, container, false)
         val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(this, Observer {
+        trafficUpdatesViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

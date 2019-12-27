@@ -61,7 +61,7 @@
                 android:paddingStart="@dimen/_8sdp"
                 android:paddingEnd="@dimen/_10sdp"
                 android:drawablePadding="@dimen/_15sdp"
-                android:drawableStart="@drawable/ic_user"
+                android:drawableStart="@drawable/ic_email"
                 android:textColor="@color/blue"
                 android:paddingBottom="@dimen/_10sdp"
                 android:paddingTop="@dimen/_10sdp"

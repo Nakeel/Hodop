@@ -1,4 +1,4 @@
-package com.we2dx.hodop.ui.tools
+package com.we2dx.hodop.ui.aboutapp
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

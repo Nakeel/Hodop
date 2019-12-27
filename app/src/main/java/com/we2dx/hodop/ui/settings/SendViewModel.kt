@@ -1,4 +1,4 @@
-package com.we2dx.hodop.ui.send
+package com.we2dx.hodop.ui.settings
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

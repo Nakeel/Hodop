@@ -8,36 +8,30 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.we2dx.hodop.ui.home.HomeFragment"
-        android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.we2dx.hodop.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_traffic_updates"
+        android:name="com.we2dx.hodop.ui.traffic_updates.TrafficUpdatesFragment"
+        tools:layout="@layout/fragment_traffic_updates" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.we2dx.hodop.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_newsletter"
+        android:name="com.we2dx.hodop.ui.newsletter.SubscribeNewsletterFragment"
+        tools:layout="@layout/fragment_newsletter" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.we2dx.hodop.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
-
-    <fragment
-        android:id="@+id/nav_share"
+        android:id="@+id/nav_invite_friends"
         android:name="com.we2dx.hodop.ui.share.ShareFragment"
-        android:label="@string/menu_share"
         tools:layout="@layout/fragment_share" />
+    <fragment
+        android:id="@+id/nav_about_app"
+        android:name="com.we2dx.hodop.ui.aboutapp.AboutAppFragment"
+        tools:layout="@layout/fragment_about_app" />
+
 
     <fragment
-        android:id="@+id/nav_send"
-        android:name="com.we2dx.hodop.ui.send.SendFragment"
-        android:label="@string/menu_send"
+        android:id="@+id/nav_settings"
+        android:name="com.we2dx.hodop.ui.settings.SettingsFragment"
         tools:layout="@layout/fragment_send" />
 </navigation>
