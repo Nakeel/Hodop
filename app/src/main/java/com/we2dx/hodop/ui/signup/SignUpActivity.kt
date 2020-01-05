@@ -22,6 +22,8 @@ import com.we2dx.hodop.HomeActivity
 
 import com.we2dx.hodop.R
 import com.we2dx.hodop.ui.login.LoginActivity
+import com.we2dx.hodop.utils.ApplicationConstants
+import com.we2dx.hodop.utils.ApplicationUtility
 
 class SignUpActivity : AppCompatActivity(), AuthListener {
     override fun authStarted() {
@@ -165,18 +167,35 @@ class SignUpActivity : AppCompatActivity(), AuthListener {
         }
     }
 
+    private fun saveCredentialsToSP(email: String, passeord: String) {
+        ApplicationUtility.storeValue(ApplicationConstants.EMAIL,email , this)
+        ApplicationUtility.storeValue(ApplicationConstants.PASSWORD,passeord,this)
+    }
+
     private fun signInUser(model: SignUpInUserView) {
         loading.visibility = View.VISIBLE
         signupText.visibility= View.GONE
         FirebaseAuth.getInstance().signInWithEmailAndPassword(model.email, model.password)
-            .addOnCompleteListener {
+
+            .addOnSuccessListener {
                 loading.visibility = View.GONE
                 signupText.visibility= View.VISIBLE
-            }
-            .addOnSuccessListener {
-                startActivity(Intent(this, HomeActivity::class.java)) //Complete and destroy signUp activity once successful
+
+                //set to has run
+                ApplicationUtility.storeBooleanValue(ApplicationConstants.HAS_LOGIN, true, this)
+
+                //save user credentials for auto login
+                saveCredentialsToSP(model.email,model.password)
+
+                val intent  = Intent(this, HomeActivity::class.java)
+                intent.putExtra(ApplicationConstants.HAS_LOGIN,true)
+                startActivity(intent)
+
                 finish()
             }.addOnFailureListener {
+
+                //set to has run
+                ApplicationUtility.storeBooleanValue(ApplicationConstants.HAS_LOGIN, false, this)
                 Toast.makeText(this,it.localizedMessage,Toast.LENGTH_LONG).show()
             }
     }
@@ -185,6 +204,7 @@ class SignUpActivity : AppCompatActivity(), AuthListener {
         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
     }
 }
+
 
 /**
  * Extension function to simplify setting an afterTextChanged action to EditText components.

@@ -6,10 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.we2dx.hodop.HomeActivity
 import com.we2dx.hodop.R
-import com.we2dx.hodop.activity.StarterActivity
 import com.we2dx.hodop.firebase.FirebaseServices
 import com.we2dx.hodop.ui.login.LoginActivity
 import com.we2dx.hodop.utils.ApplicationConstants
@@ -100,7 +101,7 @@ class SplashScreenActivity : AppCompatActivity(), TaskOnComplete {
                 //if so then checks if the network is available an)d good
                 if (NetworkUtil.isConnected(this)) {
                     //then perform the parse Login function
-//                        firebaseServices.signInWithEmail(mPassword,mUsername,this)
+                    loginUser(mUsername,mPassword)
                 } else {
                     //if no network go to
                     startActivity(Intent(applicationContext, LoginActivity::class.java))
@@ -115,5 +116,24 @@ class SplashScreenActivity : AppCompatActivity(), TaskOnComplete {
             }
 
         }
+    }
+
+    private fun loginUser(email: String, pass: String) {
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, pass)
+
+            .addOnSuccessListener {
+                //Complete and destroy signUp activity once successful
+                val intent  = Intent(this, HomeActivity::class.java)
+                intent.putExtra(ApplicationConstants.HAS_LOGIN,true)
+                startActivity(intent)
+
+                finish()
+            }.addOnFailureListener {
+                //set to hasnt run
+                ApplicationUtility.storeBooleanValue(ApplicationConstants.HAS_LOGIN, false, this)
+                //if no network go to
+                startActivity(Intent(applicationContext, LoginActivity::class.java))
+                finish()
+            }
     }
 }

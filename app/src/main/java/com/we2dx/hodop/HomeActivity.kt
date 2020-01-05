@@ -1,5 +1,6 @@
 package com.we2dx.hodop
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -19,6 +20,9 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.view.isVisible
+import com.we2dx.hodop.ui.login.LoginActivity
+import com.we2dx.hodop.utils.ApplicationConstants
+import com.we2dx.hodop.utils.ApplicationUtility
 
 class HomeActivity : AppCompatActivity() {
 
@@ -39,40 +43,51 @@ class HomeActivity : AppCompatActivity() {
         mNotificationFrameLay = toolbar.findViewById(R.id.user_notification_bell)
         mLoginButton = toolbar.findViewById(R.id.toolbar_login_button)
 
+        val hasLogin = intent.getBooleanExtra(ApplicationConstants.HAS_LOGIN,false)
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        val navView: NavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
 
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            if (destination.id==R.id.nav_home){
-                if (mSeacrhButton.isVisible){
-                    mSeacrhButton.visibility = View.GONE
+        if (hasLogin) {
+            val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+            val navView: NavigationView = findViewById(R.id.nav_view)
+            val navController = findNavController(R.id.nav_host_fragment)
+
+            navController.addOnDestinationChangedListener { controller, destination, arguments ->
+                if (destination.id == R.id.nav_home) {
+                    if (mSeacrhButton.isVisible) {
+                        mSeacrhButton.visibility = View.GONE
+                    }
+                } else if (destination.id == R.id.nav_traffic_updates) {
+                    mSeacrhButton.visibility = View.VISIBLE
+                    mNotificationFrameLay.visibility = View.VISIBLE
+
                 }
-            }else if (destination.id==R.id.nav_traffic_updates){
-                mSeacrhButton.visibility = View.VISIBLE
-                mNotificationFrameLay.visibility = View.VISIBLE
-
             }
-        }
-        supportActionBar?.title = ""
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home, R.id.nav_traffic_updates, R.id.nav_newsletter,
-                R.id.nav_invite_friends, R.id.nav_about_app, R.id.nav_settings
-            ), drawerLayout
-        )
+            supportActionBar?.title = ""
+            // Passing each menu ID as a set of Ids because each
+            // menu should be considered as top level destinations.
+            appBarConfiguration = AppBarConfiguration(
+                setOf(
+                    R.id.nav_home, R.id.nav_traffic_updates, R.id.nav_newsletter,
+                    R.id.nav_invite_friends, R.id.nav_about_app, R.id.nav_settings
+                ), drawerLayout
+            )
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+            setupActionBarWithNavController(navController, appBarConfiguration)
+            navView.setupWithNavController(navController)
 //        navView.setNavigationItemSelectedListener { item ->
 //            if (item.itemId == R.id.nav_log_out){
 //
 //            }
 //
 //        }
+        }else{
+            mNotificationFrameLay.visibility = View.GONE
+            mLoginButton.visibility = View.VISIBLE
+        }
+
+        mLoginButton.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
     }
 
 

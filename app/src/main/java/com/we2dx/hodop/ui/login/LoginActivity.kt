@@ -22,6 +22,7 @@ import com.we2dx.hodop.ui.signup.AuthListener
 import com.we2dx.hodop.ui.signup.SignUpActivity
 import com.we2dx.hodop.ui.signup.SignUpInUserView
 import com.we2dx.hodop.utils.ApplicationConstants
+import com.we2dx.hodop.utils.ApplicationUtility
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -102,9 +103,17 @@ class LoginActivity : AppCompatActivity(), AuthListener {
 
             if (loginResult.error != null) {
                 showLoginFailed(loginResult.error)
+
+                //set to has run
+                ApplicationUtility.storeBooleanValue(ApplicationConstants.HAS_LOGIN, false, this)
             }
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
+
+                //set to has login
+                ApplicationUtility.storeBooleanValue(ApplicationConstants.HAS_LOGIN, true, this)
+                //save user credentials for auto login
+                saveCredentialsToSP(email.text.toString(),password.text.toString())
             }
             setResult(Activity.RESULT_OK)
 
@@ -143,9 +152,14 @@ class LoginActivity : AppCompatActivity(), AuthListener {
             }
         }
     }
+    private fun saveCredentialsToSP(email: String, passeord: String) {
+        ApplicationUtility.storeValue(ApplicationConstants.EMAIL,email , this)
+        ApplicationUtility.storeValue(ApplicationConstants.PASSWORD,passeord,this)
+    }
 
     private fun updateUiWithUser(model: SignUpInUserView) {
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent  = Intent(this, HomeActivity::class.java)
+        intent.putExtra(ApplicationConstants.HAS_LOGIN,true)
         intent.putExtra(ApplicationConstants.USER_UID,model.userUID)
         startActivity(intent)
     }

@@ -57,6 +57,7 @@
                 android:id="@+id/notification_badge_text"
                 android:elevation="@dimen/_6sdp"
                 android:padding="@dimen/_2sdp"
+                android:visibility="gone"
                 android:gravity="center"
                 android:background="@drawable/oval_red_no_outline"
                 android:textSize="@dimen/_8ssp"

@@ -36,4 +36,5 @@
     <string name="forgot_password_text">Forgot password?</string>
     <string name="new_user_text">New user?</string>
     <string name="sign_up">Sign up</string>
+    <string name="log">LOGIN</string>
 </resources>

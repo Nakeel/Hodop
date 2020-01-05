@@ -2,6 +2,8 @@ package com.we2dx.hodop.firebase
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.we2dx.hodop.utils.ApplicationConstants
+import com.we2dx.hodop.utils.ApplicationUtility
 import io.reactivex.Completable
 
 class FirebaseServices {
@@ -18,8 +20,10 @@ class FirebaseServices {
     fun login(email: String, password: String) = Completable.create { emitter ->
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
             if (!emitter.isDisposed) {
-                if (it.isSuccessful)
+                if (it.isSuccessful) {
                     emitter.onComplete()
+
+                }
                 else
                     emitter.onError(it.exception!!)
             }

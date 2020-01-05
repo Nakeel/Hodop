@@ -6,7 +6,7 @@ class ApplicationConstants {
             val PASSCODE_TIME = 300L
             val LOGIN_STATE = "com.we2dx.drCloud.LoginStatus"
             val HAS_LOGIN = "isLoggedIn"
-            val HAS_RUN_APP_BEFORE = "hasRunBefore"
+            val HAS_TAKEN_A_PEEK = "hasTakenPeek"
             val HAS_RUN = "hasRun"
             val MY_DOCTOR = "My Doctor"
             val UPLOAD_SUCCESSFUL = "upload success"
