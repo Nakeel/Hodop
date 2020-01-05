@@ -33,11 +33,54 @@
                 android:textColor="@color/white"
 
                 />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/user_notification_bell"
+                style="@style/AlignRightActionBarButton"
+                >
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                    android:elevation="@dimen/_4sdp"
+                android:src="@drawable/ic_bell_53"
+                android:background="@color/transparent_bg"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textStyle="bold"
+                android:id="@+id/notification_badge_text"
+                android:elevation="@dimen/_6sdp"
+                android:padding="@dimen/_2sdp"
+                android:gravity="center"
+                android:background="@drawable/oval_red_no_outline"
+                android:textSize="@dimen/_8ssp"
+                android:textColor="@color/white"
+                tools:text="23"
+                tools:targetApi="lollipop" />
+            </FrameLayout>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:elevation="@dimen/_4sdp"
+                android:visibility="gone"
+                android:id="@+id/search_button"
+                style="@style/AlignRightActionBarButton"
+                android:src="@drawable/ic_search"
+                android:background="@color/transparent_bg"
+                tools:targetApi="lollipop" />
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Login"
-                android:id="@+id/toolbar_button"
+                android:visibility="gone"
+                android:id="@+id/toolbar_login_button"
                 style="@style/AlignRightActionBarButton"
                 android:textColor="@color/blue"
                 android:background="@drawable/round_edge_blue_button"

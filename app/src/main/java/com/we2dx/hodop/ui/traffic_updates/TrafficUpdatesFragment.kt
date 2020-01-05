@@ -22,9 +22,8 @@ class TrafficUpdatesFragment : Fragment() {
         trafficUpdatesViewModel =
             ViewModelProviders.of(this).get(TrafficUpdatesViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_traffic_updates, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
         trafficUpdatesViewModel.text.observe(this, Observer {
-            textView.text = it
+//            textView.text = it
         })
         return root
     }

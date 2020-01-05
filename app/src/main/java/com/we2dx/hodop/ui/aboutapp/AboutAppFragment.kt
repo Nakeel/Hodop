@@ -12,18 +12,18 @@ import com.we2dx.hodop.R
 
 class AboutAppFragment : Fragment() {
 
-    private lateinit var toolsViewModel: ToolsViewModel
+    private lateinit var aboutAppViewModel: AboutAppViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        toolsViewModel =
-            ViewModelProviders.of(this).get(ToolsViewModel::class.java)
+        aboutAppViewModel =
+            ViewModelProviders.of(this).get(AboutAppViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_about_app, container, false)
         val textView: TextView = root.findViewById(R.id.text_tools)
-        toolsViewModel.text.observe(this, Observer {
+        aboutAppViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

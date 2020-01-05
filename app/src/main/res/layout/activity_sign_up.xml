@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true">
+<RelativeLayout
+    android:layout_width="match_parent"
     android:background="@color/grey"
     android:paddingStart="@dimen/_20sdp"
     android:paddingEnd="@dimen/_20sdp"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="@dimen/_40sdp"
         android:layout_alignParentEnd="true"
@@ -16,14 +20,10 @@
         android:id="@+id/app_logo_img"
         android:src="@drawable/ic_group_logo1"/>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/app_logo_img"
-        android:fillViewport="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/app_logo_img"
         android:layout_gravity="bottom"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:orientation="vertical">
@@ -212,6 +212,6 @@
                 android:textSize="@dimen/_12ssp" />
         </LinearLayout>
     </LinearLayout>
-    </ScrollView>
 
 </RelativeLayout>
+    </ScrollView>

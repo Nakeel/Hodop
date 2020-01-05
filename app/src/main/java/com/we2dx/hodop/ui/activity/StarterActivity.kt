@@ -18,7 +18,7 @@ class StarterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_starter)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-            window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimaryDark)
+            window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimaryDarker)
         }
         take_a_tour_button.setOnClickListener {
             startAppAsGuest()

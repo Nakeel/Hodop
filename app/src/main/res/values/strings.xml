@@ -31,4 +31,9 @@
     <string name="begin_journey">Begin Journey!</string>
     <string name="phone_number">... phone number</string>
     <string name="traffic_updates">Traffic Updates</string>
+    <string name="traffic_update_dummy_text">From Jakende to Ojuelegba is experiencing heavy traffic at the moment</string>
+    <string name="login_text">Login</string>
+    <string name="forgot_password_text">Forgot password?</string>
+    <string name="new_user_text">New user?</string>
+    <string name="sign_up">Sign up</string>
 </resources>
