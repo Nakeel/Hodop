@@ -24,14 +24,14 @@
         android:id="@+id/nav_invite_friends"
         android:name="com.we2dx.hodop.ui.share.ShareFragment"
         tools:layout="@layout/fragment_share" />
-    <fragment
-        android:id="@+id/nav_about_app"
-        android:name="com.we2dx.hodop.ui.aboutapp.AboutAppFragment"
-        tools:layout="@layout/fragment_about_app" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_about_app"-->
+<!--        android:name="com.we2dx.hodop.ui.aboutapp.AboutAppFragment"-->
+<!--        tools:layout="@layout/fragment_about_app" />-->
 
 
-    <fragment
-        android:id="@+id/nav_settings"
-        android:name="com.we2dx.hodop.ui.settings.SettingsFragment"
-        tools:layout="@layout/fragment_send" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_settings"-->
+<!--        android:name="com.we2dx.hodop.ui.settings.SettingsFragment"-->
+<!--        tools:layout="@layout/fragment_send" />-->
 </navigation>

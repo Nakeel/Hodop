@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatTextView
@@ -79,18 +80,16 @@ class HomeActivity : AppCompatActivity() {
             appBarConfiguration = AppBarConfiguration(
                 setOf(
                     R.id.nav_home, R.id.nav_traffic_updates, R.id.nav_newsletter,
-                    R.id.nav_invite_friends, R.id.nav_about_app, R.id.nav_settings
+                    R.id.nav_invite_friends
+//                    R.id.nav_about_app, R.id.nav_settings
                 ), drawerLayout
             )
 
+
+
             setupActionBarWithNavController(navController, appBarConfiguration)
             navView.setupWithNavController(navController)
-//        navView.setNavigationItemSelectedListener { item ->
-//            if (item.itemId == R.id.nav_log_out){
-//
-//            }
-//
-//        }
+
         }else{
             mNotificationFrameLay.visibility = View.GONE
             mLoginButton.visibility = View.VISIBLE
@@ -104,6 +103,9 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun logout() {
+        Toast.makeText(this,"Logout Pressed",Toast.LENGTH_LONG).show()
+    }
 
 
     override fun onSupportNavigateUp(): Boolean {

@@ -9,6 +9,7 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import com.google.android.gms.maps.model.LatLng
 import com.we2dx.hodop.HomeActivity
 import com.we2dx.hodop.R
 import com.we2dx.hodop.utils.ApplicationConstants
@@ -25,10 +26,20 @@ class TrafficInfoActivity : AppCompatActivity() {
     private lateinit var mFromDestination : AppCompatTextView
     private lateinit var mToDestination : AppCompatTextView
     private lateinit var mTrafficInfoText : AppCompatTextView
+    private lateinit var mStartDestinationText : String
+    private lateinit var mStartDestinationLatLng : LatLng
+    private lateinit var mEndDestinationText : String
+    private lateinit var mEndDestinationLatLng : LatLng
 
     companion object {
-        fun newIntent(context: Context, sourceView: View? = null): Intent {
+        fun newIntent(context: Context, sourceView: View? = null,
+                      startDestinationLatLng : LatLng,endDestinationLatLng : LatLng,
+                      startDestination : String,endDestination : String): Intent {
             return Intent(context, TrafficInfoActivity::class.java).also {
+                it.putExtra(ApplicationConstants.START_LOCATION_TEXT,startDestination)
+//                it.putExtra(ApplicationConstants.USER_FULL_NAME,startDestinationLatLng)
+                it.putExtra(ApplicationConstants.END_LOCATION_TEXT,endDestination)
+//                it.putExtra(ApplicationConstants.USER_FULL_NAME,endDestinationLatLng)
                 RevealCircleAnimatorHelper.addBundleValues(it, sourceView)
             }
         }
@@ -46,6 +57,11 @@ class TrafficInfoActivity : AppCompatActivity() {
             .create(this)
             .start(rootView,ContextCompat.getColor(this,R.color.colorPrimaryDark),ContextCompat.getColor(this,R.color.colorPrimaryDarker))
 
+//        mStartDestinationLatLng = intent.getStringExtra(ApplicationConstants.USER_FULL_NAME)
+        mStartDestinationText = intent.getStringExtra(ApplicationConstants.START_LOCATION_TEXT)!!
+        mEndDestinationText = intent.getStringExtra(ApplicationConstants.END_LOCATION_TEXT)!!
+
+
         mShareTrafficInfoCard = findViewById(R.id.share_traffic_report_card)
         mAlternativeRoute = findViewById(R.id.alter_route_card)
         mPostOnHodopCard = findViewById(R.id.post_on_hodop_card)
@@ -54,6 +70,8 @@ class TrafficInfoActivity : AppCompatActivity() {
         mFromDestination = findViewById(R.id.from_loctaion_text)
         mToDestination = findViewById(R.id.to_loctaion_text)
         mTrafficInfoText = findViewById(R.id.traffic_report_text)
+
+        mFromDestination.text = mStartDestinationText
 
         mShareTrafficInfoCard.setOnClickListener { shareRouteTrafficInfo("Traffic") }
 

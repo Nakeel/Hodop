@@ -57,6 +57,11 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private lateinit var currentLocation : String
     private var isUserIdle = true
     private lateinit var mMap: GoogleMap
+    private lateinit var mAddressFeatureName :String
+    private lateinit var mStartLocationLatlng :LatLng
+    private lateinit var mStartLocationAddress :String
+    private lateinit var mEndLocationLatlng :LatLng
+    private lateinit var mEndLocationAddress :String
 
     private var PLACE_AUTOCOMPLETE_REQUEST_CODE = 1
     private var locationListener: LocationListener? = null
@@ -99,7 +104,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         }
     }
     private fun startRouteInfoActivity() {
-        startActivity(TrafficInfoActivity.newIntent(context!!, mGetDestinationRouteButton))
+
+        startActivity(TrafficInfoActivity.newIntent(context!!, mGetDestinationRouteButton,mStartLocationLatlng,LatLng(0.0,0.0),mStartLocationAddress,"EndAddress"))
     }
 
 
@@ -125,9 +131,12 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                     if (location == null) {
                         requestNewLocationData()
                     } else {
+
                         updateMap(location)
+                        mStartLocationLatlng = LatLng(location.latitude,location.longitude)
 
                         mStartLocation.text = geoCodeAddress(location)
+                        mStartLocationAddress = mAddressFeatureName
                         mStartLocation.setTextColor(
                             ContextCompat.getColor(
                                 context!!,
@@ -167,7 +176,11 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             val mLastLocation: Location = locationResult.lastLocation
             updateMap(mLastLocation)
 
+            mStartLocationLatlng = LatLng(mLastLocation.latitude,mLastLocation.longitude)
+
             mStartLocation.text = geoCodeAddress(mLastLocation)
+            mStartLocationAddress = mAddressFeatureName
+
             mStartLocation.setTextColor(
                 ContextCompat.getColor(
                     context!!,
@@ -232,279 +245,18 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     fun geoCodeAddress(location: Location?): String {
         //this creates an instance of the geoCoder class
         val geoCoder = GeoCoder()
-        return if (location != null) {
+        val address: String
+        if (location != null) {
             //sets and get the address in a string variable
-            geoCoder.getAddresses(context!!, location.latitude, location.longitude)!!
+            address = geoCoder.getAddresses(context!!, location.latitude, location.longitude)!!
+             mAddressFeatureName = geoCoder.street!!
         } else {
-            "Your Location"
+            address ="Your Location"
         }
+        return address
     }
 
 
-    /**
-     * this check if the sdk versoin is lower than 23
-     * and if the user location permission has been granted
-     */
-//    private fun sdkCheck() {
-//        if (Build.VERSION.SDK_INT < 23) {
-//
-//            if (ActivityCompat.checkSelfPermission(
-//                    context!!,
-//                    Manifest.permission.ACCESS_FINE_LOCATION
-//                ) !== PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-//                    context!!,
-//                    Manifest.permission.ACCESS_COARSE_LOCATION
-//                ) !== PackageManager.PERMISSION_GRANTED
-//            ) {
-//                // TODO: Consider calling
-//                //    ActivityCompat#requestPermissions
-//                // here to request the missing permissions, and then overriding
-//                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//                //                                          int[] grantResults)
-//                // to handle the case where the user grants the permission. See the documentation
-//                // for ActivityCompat#requestPermissions for more details.
-//
-//                ActivityCompat.requestPermissions(
-//                    activity as HomeActivity,
-//                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-//                    1
-//                )
-//
-//            } else {
-//                locationManager!!.requestLocationUpdates(
-//                    LocationManager.GPS_PROVIDER,
-//                    0,
-//                    0f,
-//                    locationListener
-//                )
-//            }
-//
-//        } else {
-//
-//            if (ContextCompat.checkSelfPermission(
-//                    context!!,
-//                    Manifest.permission.ACCESS_FINE_LOCATION
-//                ) !== PackageManager.PERMISSION_GRANTED
-//            ) {
-//
-//                ActivityCompat.requestPermissions(
-//                    activity as HomeActivity,
-//                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-//                    1
-//                )
-//
-//            } else {
-//
-//                locationManager!!.requestLocationUpdates(
-//                    LocationManager.GPS_PROVIDER,
-//                    0,
-//                    0f,
-//                    locationListener!!
-//                )
-//
-//                val lastKnownLocation =
-//                    locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-//
-//                if (lastKnownLocation != null) {
-//
-//                    updateMap(lastKnownLocation)
-//
-//                }
-//
-//
-//            }
-//        }
-//    }
-
-
-//    private fun locationListner() {
-//
-//        // this will allow us to get the location of the user
-//        locationManager = context!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-//        //        Thread listnerThread = new Thread(new Runnable() {
-//        //            @Override
-//        //            public void run() {
-//        //
-//
-//        //this will listen for changes of thw user location
-//        locationListener = object : LocationListener {
-//
-//            //called when the phone location(i.e user) is move
-//            override fun onLocationChanged(location: Location?) {
-//
-//                if (isUserIdle){
-//                    //if the location is not null t avoid errors
-//                    if (location != null) {
-//
-//                        //calls the updateMap() to display the user location on the map
-//                        updateMap(location)
-//
-//                        mStartLocation.text = geoCodeAddress(location)
-//                        mStartLocation.setTextColor(
-//                            ContextCompat.getColor(
-//                                context!!,
-//                                R.color.black
-//                            )
-//                        )
-//
-//                    }
-//
-//
-//                } else {
-//                    mStartLocation.text = geoCodeAddress(location)
-//                    mStartLocation.setTextColor(
-//                        ContextCompat.getColor(
-//                            context!!,
-//                            R.color.black
-//                        )
-//                    )
-//                    updateMap(currentLocation()!!)
-//
-//                }
-//            }
-//
-//            //called when the location service is enabled or disabled
-//            override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
-//
-//            }
-//
-//            //called when the location service is enabled by the user
-//            override fun onProviderEnabled(provider: String) {
-//
-//            }
-//
-//
-//            //called when the location service is disabled by the user
-//            override fun onProviderDisabled(provider: String) {
-//
-//            }
-//        }
-//
-//
-//    }
-
-
-    /**
-     * this method handles the getting of the user currentLocation
-     */
-//    private fun currentLocation(): Location? {
-//        val location: Location?
-//        //this checks if the user has permission to user the location or nt
-//
-//        if (Build.VERSION.SDK_INT < 23 || ContextCompat.checkSelfPermission(
-//                context!!,
-//                Manifest.permission.ACCESS_FINE_LOCATION
-//            ) === PackageManager.PERMISSION_GRANTED
-//        ) {
-//            locationManager!!.requestLocationUpdates(
-//                LocationManager.GPS_PROVIDER,
-//                0,
-//                0f,
-//                locationListener!!
-//            )
-//            location = locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-//            return location
-//        }
-//
-//
-//        if (ActivityCompat.checkSelfPermission(
-//                context!!,
-//                Manifest.permission.ACCESS_FINE_LOCATION
-//            ) !== PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-//                context!!,
-//                Manifest.permission.ACCESS_COARSE_LOCATION
-//            ) !== PackageManager.PERMISSION_GRANTED
-//        ) {
-//            // TODO: Consider calling
-//            //    ActivityCompat#requestPermissions
-//            // here to request the missing permissions, and then overriding
-//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//            //                                          int[] grantResults)
-//            // to handle the case where the user grants the permission. See the documentation
-//            // for ActivityCompat#requestPermissions for more details.
-//
-//            //if permission not granted request permission, then save the current location
-//            ActivityCompat.requestPermissions(
-//                activity as HomeActivity,
-//                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-//                1
-//            )
-//            //To rectify error here
-//            locationManager!!.requestLocationUpdates(
-//                LocationManager.GPS_PROVIDER,
-//                0,
-//                0f,
-//                locationListener!!
-//            )
-//            location = locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-//            return location
-//        } else {
-//            //else just get the current location and return
-//            locationManager!!.requestLocationUpdates(
-//                LocationManager.GPS_PROVIDER,
-//                0,
-//                0f,
-//                locationListener!!
-//            )
-//            location = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-//            return location
-//        }
-//        //        if(location==null){
-//        //            currentLocation();
-//        //        }
-//
-//
-//    }
-
-//    override fun onRequestPermissionsResult(requestCode: Int, @NonNull permissions: Array<String>, @NonNull grantResults: IntArray) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-//
-//        if (requestCode == 1) {
-//
-//            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//
-//                if (ContextCompat.checkSelfPermission(
-//                        context!!,
-//                        Manifest.permission.ACCESS_FINE_LOCATION
-//                    ) === PackageManager.PERMISSION_GRANTED
-//                ) {
-//
-//                    locationManager!!.requestLocationUpdates(
-//                        LocationManager.GPS_PROVIDER,
-//                        0,
-//                        0f,
-//                        locationListener!!
-//                    )
-//
-//                    if (locationManager != null) {
-//
-//                        locationManager!!.requestLocationUpdates(
-//                            LocationManager.GPS_PROVIDER,
-//                            0,
-//                            0f,
-//                            locationListener!!
-//                        )
-//
-//                        val lastKnownLocation =
-//                            locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-//
-//                        if (lastKnownLocation != null) {
-//                            updateMap(lastKnownLocation)
-//                        } else {
-//                            Toast.makeText(
-//                                context!!,
-//                                "Error get Current Location\n Try again ",
-//                                Toast.LENGTH_LONG
-//                            ).show()
-//                        }
-//                    } else {
-//                        Log.i("LocationManagerError", "Error")
-//                    }
-//
-//                }
-//            }
-//        }
-//    }
 
     private var AUTOCOMPLETE_REQUEST_CODE = 1
     private fun findPlace(locationType:String) {
@@ -513,12 +265,6 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         // return after the user has made a selection.
         val fields= mutableListOf(Place.Field.ID,Place.Field.NAME,Place.Field.LAT_LNG)
         val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields).build(context!!)
-//        val fields = mutableListOf(Place.Field.ID, Place.Field.NAME)
-//
-//        // Start the autocomplete intent.
-//        val intent = Autocomplete.IntentBuilder(
-//            AutocompleteActivityMode.FULLSCREEN, fields
-//        ).build(context!!)
 
         startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
     }

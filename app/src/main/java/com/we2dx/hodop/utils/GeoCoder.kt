@@ -69,9 +69,7 @@ class GeoCoder {
         return address
     }
 
-    constructor() {
-
-    }
+    constructor() {}
 
     constructor(context: Context, latitude: Double, longitude: Double) {
         geocoder = Geocoder(context, Locale.getDefault())

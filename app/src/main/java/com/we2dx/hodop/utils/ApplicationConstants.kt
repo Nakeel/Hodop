@@ -72,6 +72,12 @@ class ApplicationConstants {
             val HIGH_BP_PATIENT = "high_bp_patient"
             val ALCOHOLIC_PATIENT = "alcoholic_patient"
 
+
+            val START_LOCATION_TEXT = "start location"
+            val END_LOCATION_TEXT = "end location"
+            val START_LOCATION_LATLNG = "start latlng"
+            val END_LOCATION_LATLNG = "end latlng"
+
             val CHAT= "chat"
             val GOT_CARELINE ="got careline"
             val MESSAGES = "Messages"
