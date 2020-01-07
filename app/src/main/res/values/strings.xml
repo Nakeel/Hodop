@@ -37,4 +37,10 @@
     <string name="new_user_text">New user?</string>
     <string name="sign_up">Sign up</string>
     <string name="log">LOGIN</string>
+    <string name="map_api">AIzaSyDvnBRbwumbvqeYRVsQmg7r7SqvM1CXQGU</string>
+    <string name="title_activity_request_consent">RequestConsentActivity</string>
+    <string name="accept_hodop_rule">You are about to join Hodop traffic community</string>
+    <string name="agree_traffic_rule_text">I agree to follow the rules guiding posting of traffic update on Hodop</string>
+    <string name="tc_text">I agree to all Hodop terms and conditions</string>
+
 </resources>

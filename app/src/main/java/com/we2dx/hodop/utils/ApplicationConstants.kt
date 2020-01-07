@@ -2,12 +2,15 @@ package com.we2dx.hodop.utils
 
 class ApplicationConstants {
         companion object {
-            val SPLASHSCREEN_TIME = 2000L
+            const val SPLASHSCREEN_TIME = 2000L
             val PASSCODE_TIME = 300L
             val LOGIN_STATE = "com.we2dx.drCloud.LoginStatus"
             val HAS_LOGIN = "isLoggedIn"
-            val HAS_TAKEN_A_PEEK = "hasTakenPeek"
-            val HAS_RUN = "hasRun"
+            const val HAS_TAKEN_A_PEEK = "hasTakenPeek"
+            const val HAS_ACCEPT_TC = "HAS ACCEPTED TC"
+            const val TRAFFIC_INFO = "TRAFFIC INFO"
+            const val HAS_ACCEPT_TRAFFIC_RULE = "HAS ACCEPTED TRAFFIC RULES"
+            const val HAS_RUN = "hasRun"
             val MY_DOCTOR = "My Doctor"
             val UPLOAD_SUCCESSFUL = "upload success"
             val UPLOAD_FAIL = "upload fail"

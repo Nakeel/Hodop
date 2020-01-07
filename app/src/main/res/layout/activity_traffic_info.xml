@@ -6,6 +6,7 @@
     android:background="@color/colorPrimaryDark"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/_35sdp"
+    android:id="@+id/traffic_info_root"
     android:orientation="vertical"
     android:paddingEnd="@dimen/_15sdp"
     android:paddingStart="@dimen/_15sdp"

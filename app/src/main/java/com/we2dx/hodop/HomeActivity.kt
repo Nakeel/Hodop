@@ -23,6 +23,7 @@ import androidx.core.view.isVisible
 import com.we2dx.hodop.ui.login.LoginActivity
 import com.we2dx.hodop.utils.ApplicationConstants
 import com.we2dx.hodop.utils.ApplicationUtility
+import timber.log.Timber
 
 class HomeActivity : AppCompatActivity() {
 
@@ -44,14 +45,24 @@ class HomeActivity : AppCompatActivity() {
         mLoginButton = toolbar.findViewById(R.id.toolbar_login_button)
 
         val hasLogin = intent.getBooleanExtra(ApplicationConstants.HAS_LOGIN,false)
+        var trafficInfo = ""
+        try{
+             trafficInfo  = intent.getStringExtra(ApplicationConstants.TRAFFIC_INFO)
+        }catch (e:Exception){
+            Timber.e(e.localizedMessage)
+        }
 
+        if (trafficInfo.isNotEmpty()){
 
-        if (hasLogin) {
-            val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-            val navView: NavigationView = findViewById(R.id.nav_view)
-            val navController = findNavController(R.id.nav_host_fragment)
+        }
 
-            navController.addOnDestinationChangedListener { controller, destination, arguments ->
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        val navView: NavigationView = findViewById(R.id.nav_view)
+        val navController = findNavController(R.id.nav_host_fragment)
+
+        if (hasLogin ||trafficInfo.isNotEmpty()) {
+
+            navController.addOnDestinationChangedListener { _, destination, _ ->
                 if (destination.id == R.id.nav_home) {
                     if (mSeacrhButton.isVisible) {
                         mSeacrhButton.visibility = View.GONE
@@ -83,6 +94,9 @@ class HomeActivity : AppCompatActivity() {
         }else{
             mNotificationFrameLay.visibility = View.GONE
             mLoginButton.visibility = View.VISIBLE
+        }
+        if (trafficInfo.isNotEmpty()){
+            navController.navigate(R.id.nav_traffic_updates)
         }
 
         mLoginButton.setOnClickListener {
